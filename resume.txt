@@ -1,0 +1,38 @@
+-------
+
+if
+    if else
+        else
+
+
+> < = === && || !
+
+-------
+
+truthy = valeurs exitantes (number, string, objet, etc...)
+falsy = valeur non-existantes (0, null, NaN, undefined, true, false)
+
+-------
+
+switch()
+    case :
+    break :
+    default :
+
+-------
+
+condition ? vrai : faux
+(expression sous forme de condition)
+    
+-------
+
+expression : retourne une valeur
+declaration : ne retourne pas forcément une valeur
+
+-------
+
+for (let i = 0; i < 5; i++) {
+     ${i}
+    }
+
+-------
