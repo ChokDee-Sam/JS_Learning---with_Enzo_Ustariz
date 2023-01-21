@@ -36,3 +36,80 @@ for (let i = 0; i < 5; i++) {
     }
 
 -------
+
+/* Notes des cours
+
+-----------------------------------
+-----------------------------------
+*/
+
+// Boucle For...of
+// Effectue des actions à travers des objets itérables (tableaux, chaine de car, etc)
+
+// avec Const
+const tab1 = [1, 2, 3, 4, 5]; // le nombre de composants de tab1 = le nombre de boucle
+
+for (const element of tab1) {
+    console.log(element); // affiche 5 boucles
+}
+console.log(tab1);
+
+// avec Let
+let tab2 = [1, 2, 3, 4, 5, 6, 7];
+// let conserve le nombre de boucle, mais permet de modifier ce que l'on y affiche
+
+for (let element of tab2) {
+    element = 10; // affiche ce nombre autant de fois que le nombre de composants de tab2
+    console.log(element);
+}
+
+console.log(tab2);
+
+// -----------------------------------
+// -----------------------------------
+
+// Boucle For...in
+// Pour itérer à travers des objets
+const tesla = {
+    couleur: "blanche",
+    portes: 5,
+    prix: 50000,
+};
+
+for (const prop in tesla) {
+    console.log(`${prop}`);
+    //sous forme de string, on utilise des crochets pour avoir accès aux propriétés d'un objet
+    console.log(`${prop}:${tesla[prop]}`); //on n'utilise pas tesla.couleur ou tesla.prop
+}
+
+// -----------------------------------
+// -----------------------------------
+
+// while
+// do while
+
+// -----------------------------------
+// -----------------------------------
+
+// break
+// continue
+
+// -----------------------------------
+// -----------------------------------
+
+// try...catch
+// permet d'essayer du code afin de voir l'erreur
+
+try {
+    console.log("debut du test");
+    functionflex(); //fonction inexistante
+} catch (err) {
+    console.log("erreur de test");
+    console.log(`Voici l'erreur : ${err}`);
+    console.log(err);
+} finally {
+    console.log("On envoie quelque chose après le try, ou le catch");
+}
+
+// -----------------------------------
+// -----------------------------------
