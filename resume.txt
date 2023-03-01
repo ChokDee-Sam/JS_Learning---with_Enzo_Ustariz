@@ -9,7 +9,7 @@ if
 
 -------
 
-truthy = valeurs exitantes (number, string, objet, etc...)
+truthy = valeurs existantes (number, string, objet, etc...)
 falsy = valeur non-existantes (0, null, NaN, undefined, true, false)
 
 -------

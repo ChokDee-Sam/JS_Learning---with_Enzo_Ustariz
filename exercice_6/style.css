@@ -1,0 +1,15 @@
+.cercle {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: lightgreen;
+    transition: background-color 0.6s ease;
+  }
+
+  .carre {
+    margin-top: 10px;
+    width: 250px;
+    height: 250px;
+    background: lightblue;
+    transition: background-color 0.6s ease;
+  }
