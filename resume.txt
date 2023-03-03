@@ -44,7 +44,7 @@ for (let i = 0; i < 5; i++) {
 */
 
 // Boucle For...of
-// Effectue des actions à travers des objets itérables (tableaux, chaine de car, etc)
+// Effectue des actions à travers des objets itérables (tableaux, chaîne de car, etc)
 
 // avec Const
 const tab1 = [1, 2, 3, 4, 5]; // le nombre de composants de tab1 = le nombre de boucle
