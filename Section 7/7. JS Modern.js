@@ -75,6 +75,7 @@ monObjet.functionArrow(); // affiche undefined, et ensuite son contexte engloban
 // exemple.addEventListener('click', ()=> {
 //     console.log(this);
 // })
+
 // exemple.body.addEventListener('click', function() {
 //     console.log(this);
 // })
