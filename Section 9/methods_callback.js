@@ -1,4 +1,18 @@
 // --------------------------------------
+// -------- Rappel BOUCLE AVEC TABLEAU  ---------
+// --------------------------------------
+
+const num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const numFonction = function (nombres) {
+    for (let i = 0; i < nombres.length; i++) {
+        console.log(nombres[i]);
+    }
+};
+
+numFonction(num);
+
+// --------------------------------------
 // -------- Rappel CALLBACK  ---------
 // --------------------------------------
 // C'est une fonction utilisé en tant qu'argument
@@ -158,7 +172,7 @@ const reducedManual = function (tableau) {
         newTableau += tableau[i];
     }
 
-    return newTableau
+    return newTableau;
 };
 
 console.log(reducedManual(numTab2));
