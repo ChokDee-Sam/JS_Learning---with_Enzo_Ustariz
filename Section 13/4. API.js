@@ -64,18 +64,3 @@ xhr.onload = function(){
 }
 
 xhr.send();
-
-
-// --------------------------------------
-// --------------------------------------
-// ----------- CRÉER UNE LISTE ----------
-// --------- À PARTIR DES DONNÉES -------
-// --------------------------------------
-// --------------------------------------
-
-const liste = document.querySelector('.liste')
-const btn = document.querySelector('.btn')
-
-btn.addEventListener('click', ()=> {
-    console.log('Hello World');
-})
