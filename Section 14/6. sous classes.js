@@ -54,3 +54,16 @@ motoBike2.welcome();
 
 // --------------------------------------
 // --------------------------------------
+
+motoBike1 = function aaa(){
+    for (let i = 0; i < arr.length; i++) {
+        const er = arr[i];
+        
+    }
+}
+texz = function fun( ) {
+    for
+}
+
+
+

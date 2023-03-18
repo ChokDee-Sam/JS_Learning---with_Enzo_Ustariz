@@ -1,0 +1,103 @@
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #9058f080;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+
+.delete {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.success,
+.error {
+    text-align: center;
+    color: white;
+    padding: 5px;
+    margin: 5px 0 15px 0;
+}
+
+.success {
+    background-color: pink;
+}
+
+.error {
+    background-color: rgb(80, 0, 0);
+}
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+
+h1 {
+    text-align: center;
+}
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+
+label,
+input {
+    display: block;
+    margin: 0 auto;
+}
+
+label {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+input {
+    padding: 20px;
+    width: 40%;
+    min-width: 350px;
+}
+
+.inputs {
+    margin: 40px;
+}
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+
+button {
+    background-color: #860ea1;
+    color: white;
+    padding: 20px;
+    font-size: 18px;
+    border-radius: 20px;
+    display: block;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+
+table {
+    width: 100%;
+}
+
+th {
+    width: 33%;
+}
+
+td {
+    text-align: center;
+}
