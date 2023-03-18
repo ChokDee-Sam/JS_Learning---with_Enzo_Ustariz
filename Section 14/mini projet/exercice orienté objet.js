@@ -3,6 +3,7 @@
 
 const bookList = document.querySelector(".book-list");
 const bookForm = document.querySelector(".book-form");
+const container = document.querySelector(".container");
 
 /* --------------------------------------------------- */
 // Création d'un nouveau livre dans une rangée
@@ -21,7 +22,6 @@ class Book {
     // Création d'une Méthode pour créer et placer du HTML
 
     addBookToList(book) {
-
         // Dans une variable, on crée une rangé
         const row = document.createElement("tr");
 
@@ -40,9 +40,22 @@ class Book {
     // Création d'une méthode pour nettoyer les inputs
 
     clearFields() {
-        document.getElementById('titre').value = "";
-        document.getElementById('auteur').value = "";
-        document.getElementById('annee').value = "";
+        document.getElementById("titre").value = "";
+        document.getElementById("auteur").value = "";
+        document.getElementById("annee").value = "";
+    }
+
+    // ---------- Dans ce constructeur ----------
+    // Création d'alerte
+    showAlert(message, className) {
+        const alert = document.createElement("div");
+        alert.className = `alert ${className}`;
+        alert.appendChild(document.createTextNode(message));
+        container.insertBefore(alert, bookForm);
+
+        setTimeout(() => {
+            document.querySelector(".alert").remove();
+        }, 2500);
     }
 }
 
@@ -76,12 +89,19 @@ bookForm.addEventListener("submit", (e) => {
     const lAnnee = document.getElementById("annee").value;
 
     // Nos 3 valeurs deviennent les éléments d'un constructeur
-  
     const livre = new Book(leTitre, lAuteur, lAnnee);
 
-    // on appel la method
-    // ????????????????????????????????????????????????
-    livre.addBookToList(livre);
+    // On prépare une alerte en cas de champs vides
+    if (leTitre === "" || lAuteur === "" || lAnnee === "") {
+        livre.showAlert("Remplissez les champs", "error");
+    } else {
+        // on appel la method
+        // ??????????????????
+        livre.addBookToList(livre);
+        livre.clearFields()
+        livre.showAlert("LIVRE AJOUTÉ", "success");
+
+    }
 });
 
 /* --------------------------------------------------- */
