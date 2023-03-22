@@ -40,7 +40,7 @@ body {
     border-bottom: 3px solid rgba(255, 255, 255, 0.8);
 }
 
-.onglets {
+.onglet {
     width: 220px;
 
     display: flex;
@@ -52,7 +52,7 @@ body {
     cursor: pointer;
 }
 
-.onglets:not(:nth-child(3)) {
+.onglet:not(:nth-child(3)) {
     border-right: 3px solid rgba(255, 255, 255, 0.8);
 }
 
@@ -63,12 +63,9 @@ body {
     opacity: 0;
 }
 
-
 .contenu h3,
 .contenu p {
     padding: 20px;
-
-
 }
 .contenu hr {
     width: 20%;
@@ -80,13 +77,13 @@ body {
 
 /* animation */
 
-.active-onglets {
+.active-onglet {
     background-color: rgba(255, 255, 255, 0.8);
     color: rgba(0, 0, 0, 0.8);
-    transition: all 0.3s ease;
+    transition: all 0.75s ease;
 }
 .active-contenu {
-    animation: fade 0.5s forwards;
+    animation: fade 0.75s forwards;
 }
 
 @keyframes fade {
@@ -97,4 +94,3 @@ body {
         opacity: 1;
     }
 }
-
