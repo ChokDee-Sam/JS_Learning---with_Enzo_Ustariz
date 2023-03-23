@@ -1,0 +1,12 @@
+Check :
+- clamp
+- max-width
+
+Tous devient Objet
+console.dir()
+
+textContent plus performant que innerHtml
+
+(calcul ou nombre).toFixed(1)
+
+method.find
