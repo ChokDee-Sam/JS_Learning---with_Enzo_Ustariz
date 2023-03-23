@@ -12,7 +12,7 @@ let toggle = false;
 
 //     if (toggle) {
 //         modal.style.opacity = 1;
-//     } else if (toggle === fasle) {
+//     } else if (toggle === false) {
 //         modal.style.opacity = 0;
 //     }
 // });
