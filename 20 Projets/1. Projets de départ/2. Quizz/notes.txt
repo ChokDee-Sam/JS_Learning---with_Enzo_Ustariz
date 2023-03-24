@@ -1,0 +1,10 @@
+querySelector = addEventListener basic
+querySelectorAll = addEventListener à l'intérieur d'une boucle (forEach par exemple)
+
+innerHtml lorsqu'on veut y ajouter des choses comme des Span (textContent = pas bon)
+Pas de soucis de sécurité pour du Front
+
+forEach 
+Même si on n'utilise pas le premier paramètre
+On est obligé de passer un premier paramètre afin de pouvoir utiliser le second paramètre
+exemple.forEach((response, index) =>....
