@@ -13,7 +13,6 @@ let inputCm = document.getElementById("height");
 let inputKg = document.getElementById("weight");
 let button = document.querySelector("button");
 let bmiValue = document.querySelector(".bmi-value");
-
 let result = document.querySelector(".result");
 
 button.addEventListener("click", (e) => {
@@ -37,7 +36,7 @@ button.addEventListener("click", (e) => {
         if ((bmi > BMIData[i].range[0]) & (bmi < BMIData[i].range[1])) {
             bmiValue.style.color = BMIData[i].color;
             result.textContent = `Résultat : ${BMIData[i].name}`;
-            
+
         } else if (bmi > BMIData[5].range) {
             bmiValue.style.color = BMIData[5].color;
             result.textContent = `Résultat : ${BMIData[5].name}`;

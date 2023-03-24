@@ -9,4 +9,4 @@ textContent plus performant que innerHtml
 
 (calcul ou nombre).toFixed(1)
 
-method.find
+method.find ()
