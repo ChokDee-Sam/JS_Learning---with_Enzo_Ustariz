@@ -29,10 +29,13 @@ h1 span {
     font-weight: 800;
     margin: 0 auto 30px;
 }
-
+form {
+  max-width: 800px;
+  margin: 0 auto 30px;
+}
 input {
     display: block;
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     padding: 15px;
 

@@ -1,0 +1,4 @@
+
+//fetch ne renvoie pas forcément d'erreur 404 : il renvoie des erreurs réseaux
+console.log(response);      
+//on peut voir ok:true, et status:200 OU ok:false, et status:404

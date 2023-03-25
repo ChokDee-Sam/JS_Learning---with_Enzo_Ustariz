@@ -8,5 +8,9 @@
         "categorie",
         "reponse",
         "resultat"
-    ]
+    ],
+    "editor.tokenColorCustomizations": {
+        "comments": "",
+        "textMateRules": []
+    }
 }
