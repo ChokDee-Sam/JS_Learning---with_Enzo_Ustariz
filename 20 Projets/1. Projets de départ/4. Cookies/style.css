@@ -1,4 +1,6 @@
-*, ::before, ::after {
+*,
+::before,
+::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -6,6 +8,111 @@
 body {
     min-height: 100vh;
     font-family: Lato, sans-serif;
-    background: linear-gradient(to right, #ffefba, #ffffff); 
+    background: linear-gradient(to right, #ffefba, #ffffff);
     padding: clamp(20px, 5vw, 50px) 20px 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 45px;
+    font-weight: 300;
+    margin-bottom: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 span {
+    font-weight: 600;
+    font-family: Raleway, sans-serif;
+}
+
+form {
+    width: 100%;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btns-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+button {
+    min-width: 100px;
+    height: 40px;
+    margin: 0 10px;
+    padding: 10px 5px;
+
+    border-radius: 5px;
+    border: none;
+
+    font-size: 18px;
+    color: white;
+    background-color: teal;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+    scale: 1.05;
+    transition: all 0.3s;
+}
+
+.info-txt {
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.create-cookie-btn {
+}
+
+.display-cookie-btn {
+}
+
+.toasts-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.toast {
+    margin: 10px 0;
+    padding: 10px;
+    min-width: 150px;
+    border-radius: 2px;
+
+    color: white;
+    font-size: 17px;
+    background-color: green;
 }
