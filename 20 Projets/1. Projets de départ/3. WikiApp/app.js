@@ -26,7 +26,7 @@ form.addEventListener("submit", handleSubmit);
 
 function handleSubmit(e) {
     e.preventDefault();
-
+    // si aucun texte
     if (input.value === "") {
         errorMsg.textContent = "Woops, veuillez remplir le champs de recherche";
         return;
@@ -46,14 +46,14 @@ async function wikiApiCall(searchInput) {
     try {
         // Attendre le résultat/réponse de la méthode FETCH (qui est elle-même une recherche)
         const response = await fetch(
+            // le lien a des 'query parameters' (format json, limit de 20 réponses, etc...)
+            // avec notre paramètre de fonction (searchInput)
             `https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=20&srsearch=${searchInput}`
         );
         if (!response.ok) {
             // si ok = false
             throw new Error(`${response.status}`); // sort de la fonction, comme un return
         }
-        // le lien a des 'query parameters' (format json, limit de 20 réponses, etc...)
-        // avec notre paramètre de fonction (searchInput)
         console.log(response); // On y voit le corps de la requête http
         // Analyse la data qu'on nous renvoi, qui contient du .json, et qui nous retourne du JS
         const data = await response.json();
@@ -80,12 +80,13 @@ function createCards(data) {
     // Boucle pour chaque element de nos résultats d'API
     // issus de la const Data (data > query > search)
     data.forEach((element) => {
-        const url = `http://en.wikipedia.org/?curid=${element.pageID}`;
+        const url = `http://en.wikipedia.org/?curid=${element.pageid}`;
+        console.log(url);
         // On crée une div, on lui donne une Class, et on la remplie
         const card = document.createElement("div");
         card.className = "result-item";
         card.innerHTML = `
-        <h3 class="result-title>
+        <h3 class="result-title">
             <a href=#{url} target ="_blank"> ${element.title} </a>
         </h3>
         <a href=${url} class="result-link" target="_blank">${url}</a>
