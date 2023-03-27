@@ -72,3 +72,60 @@ function createToast({name, state, color}){
     toastInfo.remove()
   }, 2500)
 }
+
+const cookiesList = document.querySelector(".cookies-list")
+const displayCookieBtn = document.querySelector(".display-cookie-btn")
+const infoTxt = document.querySelector(".info-txt")
+
+displayCookieBtn.addEventListener("click", displayCookies)
+
+let lock = false;
+function displayCookies(){
+ 
+  if(cookiesList.children.length) cookiesList.textContent = "";
+
+  const cookies = document.cookie.replace(/\s/g, "").split(";").reverse()
+  console.log(cookies);
+
+  if(!cookies[0]) {
+    if(lock) return;
+
+    lock = true;
+    infoTxt.textContent = "Pas de cookies à afficher, créez-en un!"
+
+    setTimeout(() =>{
+      infoTxt.textContent = "";
+      lock = false;
+    }, 1500)
+    return;
+  }
+
+  createElements(cookies)
+}
+
+
+function createElements(cookies) {
+
+  cookies.forEach(cookie => {
+    const formatCookie = cookie.split("=");
+    const listItem = document.createElement("li");
+    const name = decodeURIComponent(formatCookie[0])
+    listItem.innerHTML =  `
+      <p>
+        <span>Nom</span> : ${name}
+      </p>
+      <p>
+        <span>Valeur</span>: ${decodeURIComponent(formatCookie[1])}
+      </p>
+      <button>X</button>
+    `;
+    listItem.querySelector("button").addEventListener("click", e => {
+      createToast({name:name, state: "supprimé", color: "crimson"})
+      document.cookie = `${formatCookie[0]}=; expires=${new Date(0)}`
+      e.target.parentElement.remove()
+    })
+    cookiesList.appendChild(listItem);
+  
+  })
+
+}
