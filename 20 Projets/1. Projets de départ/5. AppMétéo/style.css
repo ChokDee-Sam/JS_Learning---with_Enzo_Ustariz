@@ -212,42 +212,41 @@ main {
     transition: visibility 0.4s ease-out, opacity 0.4s ease-out;
 }
 
-.loader-container active {
+.loader-container .active {
     visibility: visible;
     opacity: 1;
 }
 
 .city-name {
-  font-family: Lato, sans-serif;
-  font-size: 50px;
-  color: #333;
+    font-family: Lato, sans-serif;
+    font-size: 50px;
+    color: #333;
 }
 
 .country-name {
-  font-size: 24px;
-  margin-bottom: 45px;
-  color: #606060;
+    font-size: 24px;
+    margin-bottom: 45px;
+    color: #606060;
 }
 
 .temperature {
-  font-family: Lato, sans-serif;
-font-size: 70px;
-font-weight: 700;
-color: #212121;
+    font-family: Lato, sans-serif;
+    font-size: 70px;
+    font-weight: 700;
+    color: #212121;
 }
 
 .info-icon-container {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
-  position: relative;
-
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .info-icon {
-  position:absolute;
-  top: 50px;
-  left: 50px;
-  transform: translate(-50%,-50%);
-  width: 150%;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    transform: translate(-50%, -50%);
+    width: 100%;
 }
