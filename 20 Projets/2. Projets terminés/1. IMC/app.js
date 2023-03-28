@@ -15,6 +15,7 @@ form.addEventListener("submit", handleForm);
 
 function handleForm(e) {
   e.preventDefault();
+
   calculateBMI();
 }
 
@@ -31,6 +32,7 @@ function calculateBMI() {
 
   const BMI = (weight / Math.pow(height / 100, 2)).toFixed(1);
   console.log(BMI);
+
   showResult(BMI);
 }
 
@@ -44,9 +46,7 @@ function handleError() {
 }
 
 function showResult(BMI) {
-
   const rank = BMIData.find(data => {
-
     if (BMI >= data.range[0] && BMI < data.range[1]) return data;
     else if (typeof data.range === "number" && BMI >= data.range) return data;
   });

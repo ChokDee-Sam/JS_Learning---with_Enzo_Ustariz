@@ -126,10 +126,10 @@ function changeSong(e){
 }
 
 function playAShuffledSong(){
-  const musicsWithoutCurrentSong = musicsData.filter(el => el.id !== currentMusicIndex)
-  const randomMusic = musicsWithoutCurrentSong[Math.trunc(Math.random() * musicsWithoutCurrentSong.length)]
-  
-  currentMusicIndex = randomMusic.id;
+  const musicsWithoutCurrentSong = musicsData.filter(el => el.id !== currentMusicIndex); // toutes les musiques sauf celle en cours
+  const randomMusic = musicsWithoutCurrentSong[Math.trunc(Math.random() * musicsWithoutCurrentSong.length)]; // musique au hasard
+
+  currentMusicIndex = randomMusic.id; 
   populateUI(randomMusic);
   play()
 }

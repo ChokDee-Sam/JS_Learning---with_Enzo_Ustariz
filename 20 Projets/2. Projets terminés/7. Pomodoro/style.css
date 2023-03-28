@@ -62,7 +62,7 @@ h1 span {
   left: 0;
   background: #111;
   transform-origin: left;
-  transform: scaleX(0)
+  transform: scaleX(0);
 }
 .description.active::after {
   animation: loading 1s ease-out infinite;
@@ -80,6 +80,7 @@ h1 span {
     transform-origin: right;
   }
 }
+
 .time {
   font-family: Inconsolata, sans-serif;
 }
