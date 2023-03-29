@@ -1,1 +1,3 @@
 dans un fetch, status : 200, c'est good 
+
+http error codes mdn (pour voir les intervals d'erreurs)

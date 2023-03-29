@@ -46,7 +46,7 @@ async function getWeatherData() {
             temperature: responseData.data.current.weather.tp,
         };
 
-        populateUI(sortedData);
+        populateUI(sortedData); // va afficher les données
     } catch (error) {
         loader.classList.remove("active");
         errorInformation.textContent = error.message;
@@ -91,3 +91,6 @@ function populateUI(data) {
 // Et voir le 'throw new Error'
 // Celui-ci stoppe la fonction,
 // car c'est ensuite géré par le gestionnaire d'erreur juste après (catch (error)
+
+// ----------------------------------------------------------
+// ----------------------------------------------------------
