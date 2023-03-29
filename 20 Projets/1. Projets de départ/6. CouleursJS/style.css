@@ -51,6 +51,9 @@ body {
 
 input[type="color"] {
     visibility: hidden;
+    /* sort du flux en absolute */
+    position: absolute;
+    right: 0;
 }
 
 .range-group {
@@ -74,9 +77,9 @@ input[type="range"] {
 }
 
 .buttons-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .buttons-container button {
@@ -91,4 +94,3 @@ input[type="range"] {
     font-size: 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.16);
 }
-
