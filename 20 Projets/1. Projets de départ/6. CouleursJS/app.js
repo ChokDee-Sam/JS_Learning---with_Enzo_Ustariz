@@ -140,3 +140,52 @@ function colorInputModification(e) {
     console.log(gradientData);
     populateUI();
 }
+
+// ----------------------------------------------------------------------
+// ----------------------------------------------------------------------
+// FONCTIONNALITÉ BOUTON : COPIER LE DÉGRADÉ
+// ----------------------------------------------------------------------
+// ----------------------------------------------------------------------
+
+const copyBtn = document.querySelector(".copy-btn");
+copyBtn.addEventListener("click", handleGradientCopy);
+
+let lock = false; // Pour éviter les Spams Click, démarre sur False
+
+function handleGradientCopy() {
+    const gradient = `linear-gradient(${gradientData.angle}deg, ${gradientData.colors[0]}, ${gradientData.colors[1]})`;
+    // Pour copier l'élément entre parenthèse
+    navigator.clipboard.writeText(gradient);
+
+    if (lock) return;
+
+    lock = true; // Lock le Spam Click
+    copyBtn.classList.add("active"); // Fait apparaître la Classe
+
+    setTimeout(() => {
+        // Effectue ces actions 1 seconde plus tard
+        copyBtn.classList.remove("active");
+        lock = false;
+    }, 1000);
+}
+
+// ----------------------------------------------------------------------
+// ----------------------------------------------------------------------
+// FONCTIONNALITÉ BOUTON : COULEURS RANDOM
+// ----------------------------------------------------------------------
+// ----------------------------------------------------------------------
+
+const randomGradientBtn = document.querySelector(".random-btn");
+randomGradientBtn.addEventListener("click", createRandomGradient);
+
+function createRandomGradient() {
+    for (let i = 0; i < colorLabels.length; i++) {
+        randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+        console.log(randomColor);
+        // console.log(colorlabels.length);
+        console.log(gradientData);
+
+        gradientData.colors[i] = randomColor.toUpperCase()
+    }
+    populateUI();
+}

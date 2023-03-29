@@ -68,12 +68,13 @@ input[type="color"] {
     border-radius: 5px;
     font-size: 20px;
     font-weight: 500;
-    background-color: wheat;
+    background-color: white;
 }
 
 input[type="range"] {
     width: 100%;
     margin-top: 15px;
+    cursor: pointer;
 }
 
 .buttons-container {
@@ -91,6 +92,50 @@ input[type="range"] {
     border: 1px solid grey;
     border-radius: 15px;
 
+    cursor: pointer;
     font-size: 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.16);
+}
+
+.copy-btn {
+    position: relative;
+}
+
+.copy-btn::after {
+    content: "Copié !";
+
+    display: block;
+    position: absolute;
+    z-index: 1;
+
+    left: 50%;
+    bottom: -135%;
+    transform: translate(-50%, 20%);
+
+    padding: 10px 15px;
+    border-radius: 5px;
+
+    white-space: nowrap; /* Évite le retour à la ligne du ! */
+
+    opacity: 0;
+    background-color: rgb(240, 240, 240);
+}
+
+.copy-btn.active::after {
+    /* garde les valeurs de fin d'animation */
+    animation: fade-out 1s ease-out forwards;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+        scale: 1;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, 0%);
+    }
 }
