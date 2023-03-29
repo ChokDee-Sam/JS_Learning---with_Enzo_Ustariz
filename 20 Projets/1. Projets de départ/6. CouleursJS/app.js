@@ -53,7 +53,6 @@ const gradientData = {
 // -------------------
 // -------------------
 
-
 function populateUI() {
     // Les 2 Labels auront le texte issue de gradientData.colors
     colorLabels[0].textContent = gradientData.colors[0];
@@ -70,11 +69,74 @@ function populateUI() {
     // On attribue les valeurs du gradient background
     document.body.style.background = `linear-gradient(${gradientData.angle}deg, ${gradientData.colors[0]}, ${gradientData.colors[1]})`;
 
-    rangeLabelValue.textContent = gradientData.angle
+    rangeLabelValue.textContent = gradientData.angle;
+
+    adaptInputsColor();
 }
 
 populateUI();
 
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
+// CHANGE LA COULEUR DE CHAQUE LABEL, EN FONCTION DE LA LUMINOSITÉ
 // ----------------------------------------------------------------------
+// ----------------------------------------------------------------------
+
+function adaptInputsColor() {
+    colorLabels.forEach((label) => {
+        const hexColor = label.textContent.replace("#", "");
+        console.log(hexColor);
+
+        // extrait 2 chiffres/lettres, puis converti le tout en Hexadecimal
+        const red = parseInt(hexColor.slice(0, 2), 16);
+        const green = parseInt(hexColor.slice(2, 4), 16);
+        const blue = parseInt(hexColor.slice(4, 6), 16);
+        console.log(red, green, blue);
+
+        // Calcule le taux de luminosité
+        const yiq = (red * 299 + green * 587 + blue * 114) / 1000;
+        console.log(yiq);
+
+        // Couleur de chaque Label en fonction du taux de luminosité
+        if (yiq >= 128) {
+            label.style.color = "#111111";
+        } else {
+            label.style.color = "#f1f1f1";
+        }
+    });
+}
+
+// ----------------------------------------------------------------------
+// ----------------------------------------------------------------------
+// CHANGER L'ORIENTATION DU DÉGRADÉ (EN DEGRÉ)
+// ----------------------------------------------------------------------
+// ----------------------------------------------------------------------
+
+const rangeInput = document.querySelector(".inp-range");
+rangeInput.addEventListener("input", handleInclination);
+
+function handleInclination() {
+    gradientData.angle = rangeInput.value;
+    rangeLabelValue.textContent = `${gradientData.angle}°`;
+    populateUI();
+}
+
+// ----------------------------------------------------------------------
+// ----------------------------------------------------------------------
+// OBTENIR L'INDEX ET LA VALEUR, SUR CHAQUE INPUT
+// ----------------------------------------------------------------------
+// ----------------------------------------------------------------------
+
+colorPickerInputs.forEach((input) =>
+    input.addEventListener("input", colorInputModification)
+);
+
+function colorInputModification(e) {
+    const currentIndex = colorPickerInputs.indexOf(e.target);
+    console.log(currentIndex);
+    // console.log(colorPickerInputs);
+
+    gradientData.colors[currentIndex] = e.target.value.toUpperCase();
+    console.log(gradientData);
+    populateUI();
+}
