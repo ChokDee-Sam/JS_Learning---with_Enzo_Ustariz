@@ -2,8 +2,13 @@
 // Temps
 // ----------------------------------------------------------------
 
-let workTime = 10;
-let restTime = 10;
+let workTime = 1800;
+let restTime = 300;
+
+// ------
+
+let animWork = document.querySelector(".work");
+let animRest = document.querySelector(".rest");
 
 // ----------------------------------------------------------------
 // Affichage du temps selon le temps restant (fonction)
@@ -61,12 +66,20 @@ let pause = false;
 function handlePlayPause() {
     if (togglePlayBtn.getAttribute("data-toggle") === "play") {
         pause = false;
-        togglePlayBtn.firstElementChild.src = "ressources/pause.svg";
         togglePlayBtn.setAttribute("data-toggle", "pause");
+        togglePlayBtn.firstElementChild.src = "ressources/pause.svg";
+
+        // Lance l'animation avant la fonction handleTicks
+        if (workTime) {
+            handleClassAnimation({ work: true, rest: false });
+        } else {
+            handleClassAnimation({ work: false, rest: true });
+        }
     } else {
         pause = true;
-        togglePlayBtn.firstElementChild.src = "ressources/play.svg";
         togglePlayBtn.setAttribute("data-toggle", "play");
+        togglePlayBtn.firstElementChild.src = "ressources/play.svg";
+        handleClassAnimation({ work: false, rest: false });
     }
 }
 
@@ -85,16 +98,60 @@ function handleTicks() {
     if (!pause && workTime > 0) {
         workTime--;
         displayWork.textContent = formattedTime(workTime);
+        handleClassAnimation({ work: true, rest: false });
     } else if (!pause && !workTime && restTime > 0) {
         restTime--;
         displayPause.textContent = formattedTime(restTime);
+        handleClassAnimation({ work: false, rest: true });
     } else if (!pause && !workTime && !restTime) {
-        workTime = 3;
+        workTime = 1799;
         restTime = 3;
         displayWork.textContent = formattedTime(workTime);
         displayPause.textContent = formattedTime(restTime);
+        handleClassAnimation({ work: true, rest: false });
 
         cyclesNumber++;
         cycles.textContent = `Cycle(s) : ${cyclesNumber}`;
     }
+}
+
+// ----------------------------------------------------------------
+// Animation
+// ----------------------------------------------------------------
+
+function handleClassAnimation(itemState) {
+    for (const item in itemState) {
+        if (itemState[item]) {
+            document.querySelector(`.${item}`).classList.add("active");
+        } else {
+            document.querySelector(`.${item}`).classList.remove("active");
+        }
+    }
+}
+
+// ----------------------------------------------------------------
+// Reset
+// ----------------------------------------------------------------
+
+const resetBtn = document.querySelector(".reset-btn");
+resetBtn.addEventListener("click", reset);
+
+function reset() {
+    workTime = 1799;
+    restTime = 300;
+
+    displayWork.textContent = formattedTime(workTime);
+    displayPause.textContent = formattedTime(restTime);
+
+    cyclesNumber = 0;
+    cycles.textContent = `Cycle(s) : 0`;
+
+    clearInterval(timerID);
+    currentInterval = false;
+    pause = true;
+
+    togglePlayBtn.setAttribute("data-toggle", "play");
+    togglePlayBtn.firstElementChild.src = "ressources/play.svg";
+
+    handleClassAnimation({ work: false, rest: false });
 }
