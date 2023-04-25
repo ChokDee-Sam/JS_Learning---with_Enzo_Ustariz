@@ -10,3 +10,7 @@ body {
     font-family: Open sans, Helvetica, sans-serif;
     padding: clamp(20px, 5vw, 50px) 10px;
 }
+
+img {
+    display: none;
+}
