@@ -1,4 +1,5 @@
 // ----------------------------------------------------------
+// Stockage des données selon la validation ou non des inputs
 // ----------------------------------------------------------
 
 const inputsValidity = {
@@ -8,14 +9,24 @@ const inputsValidity = {
     passwordConfirmation: false,
 };
 
+// ----------------------------------------------------------
+// Localise le formulaire et le container pour l'animation
+// ----------------------------------------------------------
+
 const form = document.querySelector("form");
 const container = document.querySelector(".container");
 
+// ----------------------------------------------------------
+// Event sur Submit + anticiper le spam
+// ----------------------------------------------------------
+
 form.addEventListener("submit", handleForm);
+let isAnimating = false; 
 
-let isAnimating = false;
+// ----------------------------------------------------------
+// fonction sur bouton qui va vérifier les validations d'inputs
+// ----------------------------------------------------------
 
-// fonction sur bouton
 function handleForm(e) {
     e.preventDefault();
     const keys = Object.keys(inputsValidity);
@@ -30,11 +41,13 @@ function handleForm(e) {
         isAnimating = true;
         container.classList.add("shake");
 
+        // Delay pour éviter les spams
         setTimeout(() => {
             container.classList.remove("shake");
             isAnimating = false;
         }, 400);
 
+        // Affiche sur chaque input un message si erreur
         failedInputs.forEach((input) => {
             const index = keys.indexOf(input);
             showValidation({ index: index, validation: false });
@@ -45,7 +58,12 @@ function handleForm(e) {
 }
 
 // ----------------------------------------------------------
+// Fonction qui permet d'afficher le SVG selon la validation
 // ----------------------------------------------------------
+
+// Les 2 icônes : validation et invalidation
+const validationIcons = document.querySelectorAll(".icone-verif");
+const validationTexts = document.querySelectorAll(".error-msg");
 
 function showValidation({ index, validation }) {
     if (validation) {
@@ -64,11 +82,8 @@ function showValidation({ index, validation }) {
 }
 
 // ----------------------------------------------------------
+// ------------------- NOM D'UTILISATEUR --------------------
 // ----------------------------------------------------------
-
-// Les 2 icônes : validation et invalidation
-const validationIcons = document.querySelectorAll(".icone-verif");
-const validationTexts = document.querySelectorAll(".error-msg");
 
 // Le premier input
 const userInput = document.querySelector(".input-group:nth-child(1) input");
@@ -79,7 +94,6 @@ userInput.addEventListener("blur", userValidation);
 
 //
 function userValidation() {
-    console.log(userInput.value);
     if (userInput.value.length >= 3) {
         showValidation({ index: 0, validation: true });
         inputsValidity.user = true;
@@ -90,6 +104,7 @@ function userValidation() {
 }
 
 // ----------------------------------------------------------
+// ------------------------- EMAIL --------------------------
 // ----------------------------------------------------------
 
 // Le mail input
@@ -99,9 +114,10 @@ const mailInput = document.querySelector(".input-group:nth-child(2) input");
 mailInput.addEventListener("input", mailValidation);
 mailInput.addEventListener("blur", mailValidation);
 
-//
+// Pour définir exactement les chiffres et les lettres possibles
 const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
+// 
 function mailValidation() {
     if (regexEmail.test(mailInput.value)) {
         showValidation({ index: 1, validation: true });
@@ -112,6 +128,7 @@ function mailValidation() {
     }
 }
 // ----------------------------------------------------------
+// ------------------------ PASSWORD ------------------------
 // ----------------------------------------------------------
 
 // Le password input
@@ -172,13 +189,14 @@ function passwordValidation(e) {
         inputsValidity.password = true;
     }
 
-    passwordStrength();
+    passwordStrength(); 
 }
 
 // ----------------------------------------------------------
-// Afficher la force du password
+// ------------- Afficher la force du password --------------
 // ----------------------------------------------------------
 
+// Localiser toutes les lignes
 const lines = document.querySelectorAll(".lines div");
 
 function passwordStrength() {
@@ -202,7 +220,7 @@ function passwordStrength() {
     }
 }
 
-//
+// affichage des lignes selon le niveau de force du password
 function addLines(numberOfLines) {
     lines.forEach((element, index) => {
         if (index < numberOfLines) {
@@ -217,7 +235,7 @@ function addLines(numberOfLines) {
 }
 
 // ----------------------------------------------------------
-// Confirm passwords
+// -------------------- CONFIRM PASSWORD --------------------
 // ----------------------------------------------------------
 
 // Le confirm password input
