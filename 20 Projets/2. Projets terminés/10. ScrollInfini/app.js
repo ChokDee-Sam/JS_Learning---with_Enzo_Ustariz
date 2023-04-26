@@ -1,7 +1,7 @@
-const imagesList = document.querySelector(".images-list");
-const errorMsg = document.querySelector(".error-msg");
-let searchQuery = "random";
-let pageIndex = 1;
+// const imagesList = document.querySelector(".images-list");
+// const errorMsg = document.querySelector(".error-msg");
+// let searchQuery = "random";
+// let pageIndex = 1;
 
 async function fetchData(){
   try {
