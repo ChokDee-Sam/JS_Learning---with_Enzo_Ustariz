@@ -51,7 +51,61 @@ function createImages(data) {
     // Pour chaque element de la data (qui est un fetch json)
     data.forEach((img) => {
         const newImg = document.createElement("img"); //on crée un element img
-        newImg.src = img.urls.regular; // on lui donne une source issue de la data
+        newImg.src = img.urls.regular; // on lui donne une source qualité issue de la data
         imagesList.appendChild(newImg); // on le place en enfant d'imageList
+    });
+}
+
+// ----------------------------------------------------------
+// ----------------------------------------------------------
+
+// on va créer un nouvel objet avec le constructeur IntersectionObserver
+// quand il entrera en ligne de mire
+const observer = new IntersectionObserver(handleIntersect, {
+    rootMargin: "100%",
+});
+console.log(observer);
+observer.observe(document.querySelector(".infinite-marker"));
+
+// --------------------------------
+
+function handleIntersect(entries) {
+    console.log(entries);
+    if (window.scrollY > window.innerHeight && entries[0].isIntersecting) {
+        pageIndex++;
+        fetchData();
+    }
+}
+
+// --------------------------------
+
+const input = document.querySelector("#search");
+const form = document.querySelector("form");
+
+form.addEventListener("submit", handleSearch);
+
+function handleSearch(e) {
+    e.preventDefault();
+
+    imagesList.textContent = "";
+    if (!input.value) {
+        errorMsg.textContent = "L'objet de la recherche de peut être vide.";
+        return;
+    }
+
+    errorMsg.textContent = "";
+    searchQuery = input.value;
+    pageIndex = 1;
+    fetchData();
+}
+
+const scrollToTop = document.querySelector(".scroll-to-top");
+
+scrollToTop.addEventListener("click", pushToTop);
+
+function pushToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
     });
 }
