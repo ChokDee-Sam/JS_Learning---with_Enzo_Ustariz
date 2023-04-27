@@ -57,3 +57,40 @@ function createUserList(array) {
         tableResults.appendChild(listItem);
     });
 }
+
+// ------------------------------------------------------
+
+const searchInput = document.querySelector("#search");
+
+searchInput.addEventListener("input", filterData);
+
+function filterData(e) {
+    tableResults.textContent = ""; // retire la liste
+
+    // En lettres minuscules + retire les espaces
+    const searchedString = e.target.value.toLowerCase().replace(/\s/g, "");
+
+    const filteredArr = dataArray.filter((userData) =>
+        searchForOccurences(userData)
+    );
+
+    function searchForOccurences(userData) {
+        const searchTypes = {
+            firstname: userData.name.first.toLowerCase(),
+            lastName: userData.name.last.toLowerCase(),
+            firstAndLast: `${
+                userData.name.first + userData.name.last
+            }`.toLowerCase(),
+            lastAndFirst: `${
+                userData.name.last + userData.name.first
+            }`.toLowerCase(),
+        };
+        for (const prop in searchTypes) {
+            if (searchTypes[prop].includes(searchedString)) {
+                return true;
+            }
+        }
+    }
+
+    createUserList(filteredArr);
+}
