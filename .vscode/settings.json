@@ -12,5 +12,6 @@
     "editor.tokenColorCustomizations": {
         "comments": "",
         "textMateRules": []
-    }
+    },
+    "cSpell.words": ["Btns"]
 }
