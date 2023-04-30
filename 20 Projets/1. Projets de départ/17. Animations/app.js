@@ -8,6 +8,7 @@ const customCursor = document.querySelector(".custom-cursor");
 function handleCustomCursor(e) {
     customCursor.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
 }
+
 // -------------------------------------------------------------------
 
 const title = document.querySelector("h1");
